@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+
 import './NoteForm.css'
 
 class NoteForm extends Component {
@@ -7,15 +8,24 @@ class NoteForm extends Component {
       <div className="NoteForm">
         <form>
           <p>
-            <input type="text" name="title" placeholder="Title your note" />
+            <input
+              type="text"
+              name="title"
+              placeholder="Title your note"
+            />
           </p>
           <p>
-            <textarea name="body" cols="30" rows="10" placeholder="Just start typing..."></textarea>
+            <textarea
+              name="body"
+              cols="30"
+              rows="10"
+              placeholder="Just start typing..."
+          ></textarea>
           </p>
         </form>
       </div>
-
     )
   }
 }
+
 export default NoteForm

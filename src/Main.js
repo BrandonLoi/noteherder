@@ -6,11 +6,11 @@ import NoteList from './NoteList.js'
 import NoteForm from './NoteForm.js'
 
 
-const Main = () => {
+const Main = (props) => {
   return (
     <div className="Main">
       <SideBar />
-      <NoteList />
+      <NoteList notes={props.notes}/>
       <NoteForm />
     </div>
   )
