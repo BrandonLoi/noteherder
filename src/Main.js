@@ -1,5 +1,6 @@
 import React from 'react'
 
+import './Main.css'
 import SideBar from './Sidebar.js'
 import NoteList from './NoteList.js'
 import NoteForm from './NoteForm.js'
