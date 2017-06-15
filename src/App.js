@@ -11,6 +11,15 @@ class App extends Component {
       notes: {},
     }
   }
+  deleteNote = (note) => {
+    console.log(note);
+    const notes = {...this.state.notes}
+    if (!notes[note.id]) {
+      return
+    }
+    delete notes[note.id]
+    this.setState({ notes })
+  }
 
   saveNote = (note) => {
     if (!note.id) {
@@ -20,11 +29,11 @@ class App extends Component {
     notes[note.id] = note
     this.setState({ notes })
   }
-  
+
   render() {
     return (
       <div className="App">
-        <Main notes={this.state.notes} saveNote={this.saveNote} />
+        <Main notes={this.state.notes} saveNote={this.saveNote} deleteNote={this.deleteNote}/>
       </div>
     );
   }
