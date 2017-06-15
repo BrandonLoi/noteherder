@@ -1,17 +1,19 @@
 import React from 'react'
 
-const Note = (props) => {
+import './Note.js'
+
+const Note = ({ note }) => {
   return (
     <li>
       <div className="note">
         <div className="note-title">
-          {props.note.title}
+          {note.title}
         </div>
         <div className="note-body">
           <p>
-            {props.note.body}
+            {note.body}
           </p>
-        </div>
+          </div>
       </div>
     </li>
   )
