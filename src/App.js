@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import './App.css';
 import Main from './Main'
 import base from './base.js'
+import SignIn from './SignIn'
+import SignOut from './SignOut'
+import 'firebase/auth'
 
 class App extends Component {
   constructor() {
@@ -23,7 +26,7 @@ class App extends Component {
 
       }
     )
-    
+
   }
 
   deleteNote = (note) => {
@@ -45,10 +48,31 @@ class App extends Component {
     this.setState({ notes })
   }
 
+  signedIn = () => {
+    return this.state.uid
+  }
+
+  authHandler = (userData) => {
+    this.setState({ uid: userData.uid })
+  }
+
+  signOut = () => {
+    this.setState({ uid: null })
+  }
+
+  renderMain = () => {
+    return (
+      <div>
+        <SignOut signOut={this.signOut} />
+        <Main notes={this.state.notes} saveNote={this.saveNote} />
+      </div>
+    )
+  }
+
   render() {
     return (
       <div className="App">
-        <Main notes={this.state.notes} saveNote={this.saveNote} deleteNote={this.deleteNote}/>
+        { this.signedIn() ? this.renderMain() : <SignIn authHandler={this.authHandler} /> }
       </div>
     );
   }
