@@ -1,27 +1,21 @@
 import React from 'react'
 
-import './Note.css'
-
-const Note = (props) => {
-  const customDelete = (ev) => {
-    props.deleteNote(props.note)
-  }
+const Note = ({ note, setCurrentNoteId }) => {
   return (
-    <li>
-      <div className="note">
-        <div className="note-title">
-          {props.note.title}
+    <a onClick={() => setCurrentNoteId(note.id)}>
+      <li>
+        <div className="note">
+          <div className="note-title">
+            {note.title}
+          </div>
+          <div className="note-body">
+            <p>
+              {note.body}
+            </p>
+          </div>
         </div>
-        <div className="note-body">
-          <p>
-            {props.note.body}
-          </p>
-        </div>
-        <div>
-          <button onClick={customDelete}>Delete</button>
-        </div>
-      </div>
-    </li>
+      </li>
+    </a>
   )
 }
 
