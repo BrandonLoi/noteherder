@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import './App.css';
+import './App.css'
 import Main from './Main'
-import base from './base.js'
 import SignIn from './SignIn'
 import SignOut from './SignOut'
-import 'firebase/auth'
+import base, { auth } from './base'
 
 class App extends Component {
   constructor() {
@@ -13,8 +12,8 @@ class App extends Component {
 
     this.state = {
       notes: {},
+      uid: null,
     }
-
   }
 
   componentWillMount() {
@@ -22,21 +21,9 @@ class App extends Component {
       'notes',
       {
         context: this,
-        state: 'notes'
-
+        state: 'notes',
       }
     )
-
-  }
-
-  deleteNote = (note) => {
-    console.log(note);
-    const notes = {...this.state.notes}
-    if (!notes[note.id]) {
-      return
-    }
-    delete notes[note.id]
-    this.setState({ notes })
   }
 
   saveNote = (note) => {
@@ -57,7 +44,10 @@ class App extends Component {
   }
 
   signOut = () => {
-    this.setState({ uid: null })
+    auth
+      .signOut()
+      .then(() => this.setState({ uid: null }))
+
   }
 
   renderMain = () => {
