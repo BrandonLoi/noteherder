@@ -13,7 +13,7 @@ const SignIn = () => {
       className="SignIn"
       onClick={authenticate}
     >
-      Sign In With GitHub
+      Sign In
     </button>
   )
 }
